@@ -63,7 +63,7 @@
     {{-- <div class="card-header">Messages</div> --}}
     <div class="col-sm-4 card messagebox--users">
        <div class="card-header">
-           Users
+            {{ __('msg.users') }}
        </div>
        <div class="container flex">
             <ul class="list-group mt-4 mb-4">
@@ -83,7 +83,7 @@
     </div>
     <div class="card col-sm-8 col-xs-12 message-log">
         <div class="card-header">
-             Message Log
+                {{ __('msg.message_log') }}
         </div>
 
         @if(isset($convo))

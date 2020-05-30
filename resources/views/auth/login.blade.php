@@ -59,7 +59,7 @@
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ __('msg.forgot_password') }}
                                     </a>
                                 @endif
                             </div>
@@ -67,6 +67,15 @@
                     </form>
                 </div>
             </div>
+
+            <div class="offset-sm-7 row mt-5  ">
+                    <div class="col-md-4 col-sm-offset-2">
+                        <a class="locale" href="setlocale/fil"> Filipino </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="locale" href="setlocale/en"> English </a>
+                    </div>
+                </div>
         </div>
     </div>
 </div>

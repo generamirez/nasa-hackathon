@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App;
 
 class HomeController extends Controller
 {
@@ -24,5 +25,14 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function changeLocale(Request $request)
+    {
+        if(!in_array($request->locale, ['en','fil'])){
+            return redirect()->back();
+        }
+        App::setLocale($request->locale);
+        return redirect()->back();
     }
 }

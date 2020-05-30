@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
-                        <label for="name" class="control-label">Title</label>
+                        <label for="name" class="control-label">{{ __('msg.name') }}</label>
                         {{ Form::text('title', null, ['class' => 'form-control', 'required', 'maxlength' => 255]) }}
                     </div>
                 </div>
@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
-                        <label for="date" class="control-label">Description</label>
+                        <label for="date" class="control-label">{{ __('msg.description') }}</label>
                         {{ Form::text('description', null, ['class' => 'form-control']) }}
                     </div>
                 </div>
@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
-                        <label for="date" class="control-label"># Available</label>
+                        <label for="date" class="control-label">{{ __('msg.available') }}</label>
                         {{ Form::number('available', null, ['class' => 'form-control']) }}
                     </div>
                 </div>
@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
-                        <label for="date" class="control-label">Price</label>
+                        <label for="date" class="control-label">{{ __('msg.price') }}</label>
                         {{ Form::number('price', null, ['class' => 'form-control']) }}
                     </div>
                 </div>
@@ -55,8 +55,8 @@
             <div class="row">
                     <div class="col-sm-8">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                          <a href={{route('sales-posts.index')}} class="btn btn-secondary">Back</a>
-                          <button class="btn btn-primary" type="submit">Submit</button>
+                          <a href={{route('sales-posts.index')}} class="btn btn-secondary">{{ __('msg.back') }}</a>
+                          <button class="btn btn-primary" type="submit">{{ __('msg.submit') }}</button>
                         </div>
                     </div>
                 </div>

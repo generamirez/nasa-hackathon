@@ -33,13 +33,17 @@
             }
 
             /* The navigation menu links */
-            .sidenav a {
+            .sidenav .navButton {
               padding: 8px 8px 8px 32px;
               text-decoration: none;
               font-size: 25px;
               color: #818181;
               display: block;
               transition: 0.3s;
+            }
+
+            .locale {
+                display:inline;
             }
 
             /* When you mouse over the navigation links, change their color */
@@ -108,11 +112,11 @@
 
         @else
         <div id="mySidenav" class="sidenav">
-          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-          <a href="{{route('sales-posts.index')}}">Sales</a>
-          <a href="{{route('my.listings')}}">My Listings</a>
-          <a href="{{route('chat.index')}}">Chat</a>
-          <a href="{{ route('logout') }}"
+          <a href="javascript:void(0)" class="closebtn navButton" onclick="closeNav()">&times;</a>
+          <a class="navButton" href="{{route('sales-posts.index')}}">Sales</a>
+          <a class="navButton" href="{{route('my.listings')}}">My Listings</a>
+          <a class="navButton" href="{{route('chat.index')}}">Chat</a>
+          <a class="navButton" href="{{ route('logout') }}"
             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
             {{ __('Logout') }}
@@ -121,6 +125,16 @@
        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
            @csrf
        </form>
+
+
+       <div class="form-group row mt-5  ">
+            <div class="col-md-4 col-sm-offset-2">
+                <a class="locale" href="setlocale/fil"> Filipino </a>
+            </div>
+            <div class="col-md-4">
+                <a class="locale" href="setlocale/en"> English </a>
+            </div>
+        </div>
         </div>
         {{-- <span onclick="openNav()">open</span> --}}
         @endguest

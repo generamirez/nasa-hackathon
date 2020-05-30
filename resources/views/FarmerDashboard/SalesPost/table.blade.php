@@ -3,15 +3,15 @@
     <div class="col-md-8">
     <div class="table-responsive">
             <div class="btn-group float-right mb-4" role="group" aria-label="Basic example">
-              <a type="button" href={{route('sales-posts.create')}} class="btn btn-primary">Create a new listing</a>
+              <a type="button" href={{route('sales-posts.create')}} class="btn btn-primary">{{ __('msg.new_listing') }}</a>
             </div>
         <table class="table">
             <thead>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Available</th>
-                <th>Price</th>
-                <th>Actions</th>
+                <th>{{ __('msg.name') }}</th>
+                <th>{{ __('msg.description') }}</th>
+                <th>{{ __('msg.available') }}</th>
+                <th>{{ __('msg.price') }}</th>
+                <th>{{ __('msg.actions') }}</th>
             </thead>
             <tbody>
                 @forelse ($posts as $p)
@@ -29,12 +29,12 @@
                             @if (isset($my_list))
                                 {{ Form::open(['route' => 'mark.sold']) }}
                                     {{ Form::hidden('id', $p->id) }}
-                                        <button type="submit" class="btn btn-danger">Sell</button>
+                                        <button type="submit" class="btn btn-danger">{{ __('msg.sell') }}</button>
                                 {{ Form::close() }}
                             @else
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#showModal">
-                                        View
+                                        {{ __('msg.view') }}
                                 </button>
 
                                 <!-- Modal -->
@@ -50,7 +50,7 @@
                                         <div class="modal-body">
                                             {{-- {{ dd($p) }} --}}
                                                 <img src="{{ $p->thumbnailUrl }}" class="img-responsive bg-transparent">
-                                                <h5> Description </h5>
+                                                <h5> {{ __('msg.description') }} </h5>
                                                 <p>
                                                     {{ $p->description }}
                                                 </p>
@@ -60,8 +60,8 @@
                                                 </p>
                                         </div>
                                         <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <a href={{route('click.chat',['id'=>$p->id])}} class="btn btn-primary">Message Seller</a>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('msg.close') }}</button>
+                                        <a href={{route('click.chat',['id'=>$p->id])}} class="btn btn-primary">{{ __('msg.message_seller') }}</a>
                                         </div>
                                     </div>
                                     </div>
