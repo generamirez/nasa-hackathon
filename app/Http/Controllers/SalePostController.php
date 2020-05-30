@@ -38,17 +38,20 @@ class SalePostController extends Controller
      */
     public function store(Request $request)
     {
-        $filename = ($request->title) . '-'. rand(0,1000). '-' . $request->image->getClientOriginalExtension();
         DB::beginTransaction();
         $sp = new SalePost;
         $sp->title = $request->title;
-        $sp->image = $request->image->storeAs(SalePostController::UPLOAD_PATH, $filename);
         $sp->description = $request->description;
         $sp->available = $request->available;
         $sp->price = $request->price;
         $sp->user_id = \Auth::user()->id;
+        if($request->image){
+
+            $filename = ($request->title) . '-'. rand(0,1000). '-' . $request->image->getClientOriginalExtension();
+            $sp->image = $request->image->storeAs(SalePostController::UPLOAD_PATH, $filename);
+            $sp->createThumbnail();
+        }
         $sp->save();
-        $sp->createThumbnail();
         DB::commit();
 
         return redirect()->back()->with('success', 'Created a new listing!');
