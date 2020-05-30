@@ -73,7 +73,7 @@
             <span onclick="openNav()" class="navbar-toggler-icon"></span>
 
             <a class="navbar-brand ml-5" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                i-Agri
             </a>
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
