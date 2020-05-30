@@ -43,14 +43,14 @@
                 </div>
             </div>
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="image" class="control-label">Image</label>
                         {{ Form::file('image', ['class' => 'form-control']) }}
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="row">
                     <div class="col-sm-8">
