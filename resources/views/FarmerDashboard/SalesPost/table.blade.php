@@ -26,9 +26,15 @@
                         <td>{{ $p->available }}</td>
                         <td>{{ $p->price }}</td>
                         <td>
+                            @if (isset($my_list))
+                                {{ Form::open(['route' => 'mark.sold']) }}
+                                    {{ Form::hidden('id', $p->id) }}
+                                        <button type="submit" class="btn btn-danger">Sell</button>
+                                {{ Form::close() }}
+                            @else
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#showModal">
-                                    View
+                                        View
                                 </button>
 
                                 <!-- Modal -->
@@ -60,6 +66,7 @@
                                     </div>
                                     </div>
                                 </div>
+                            @endif
 
                         </td>
                     </tr>

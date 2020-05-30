@@ -59,7 +59,7 @@
 
 
 
-<div class="row main">
+<div class="row justify-content-center">
     {{-- <div class="card-header">Messages</div> --}}
     <div class="col-sm-4 card messagebox--users">
        <div class="card-header">
@@ -72,7 +72,7 @@
                     $data = json_decode($a->data);
                 @endphp
                 <a href="{{route('chat.show', $a->id)}}">
-                        <li class="list-group-item user-chat"> {{ $data->user_to }} - {{ $data->title }}</li>
+                <li class="list-group-item user-chat"> {{ $data->user_to }} - {{ $data->title }}</li>
 
                 </a>
             @empty

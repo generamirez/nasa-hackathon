@@ -99,4 +99,22 @@ class SalePostController extends Controller
     {
         //
     }
+
+    public function myListings(Request $request)
+    {
+        $posts = SalePost::where('user_id', '=', \Auth::user()->id)
+        ->where('sold',false)
+        ->paginate(20);
+        $my_list = true;
+        return view('FarmerDashboard.SalesPost.index', compact('posts','my_list'));
+    }
+
+    public function sell(Request $request)
+    {
+        $sp = SalePost::find($request->id);
+        $sp->sold = true;
+        $sp->save();
+
+        return redirect()->back()->with('success', 'Successfully sold!');
+    }
 }

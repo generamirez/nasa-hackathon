@@ -18,18 +18,18 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>/* The side navigation menu */
+    <style>
             .sidenav {
               height: 100%; /* 100% Full-height */
-              width: 0; /* 0 width - change this with JavaScript */
-              position: fixed; /* Stay in place */
-              z-index: 1; /* Stay on top */
-              top: 0; /* Stay at the top */
+              width: 0;
+              position: fixed;
+              z-index: 1;
+              top: 0;
               left: 0;
-              background-color: #111; /* Black*/
-              overflow-x: hidden; /* Disable horizontal scroll */
-              padding-top: 60px; /* Place content 60px from the top */
-              transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+              background-color: #111;
+              overflow-x: hidden;
+              padding-top: 60px;
+              transition: 0.5s;
             }
 
             /* The navigation menu links */
@@ -110,6 +110,7 @@
         <div id="mySidenav" class="sidenav">
           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
           <a href="{{route('sales-posts.index')}}">Sales</a>
+          <a href="{{route('my.listings')}}">My Listings</a>
           <a href="{{route('chat.index')}}">Chat</a>
           <a href="{{ route('logout') }}"
             onclick="event.preventDefault();

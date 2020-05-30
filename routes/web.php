@@ -20,6 +20,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/my-listings', 'SalePostController@myListings')->name('my.listings')->middleware('auth');
+Route::post('/sold', 'SalePostController@sell')->name('mark.sold')->middleware('auth');
 Route::get('/click/chat', 'ChatController@makeChatRoom')->name('click.chat')->middleware('auth');
 Route::post('/{id}/postMessage', 'ChatController@makeChatMessage')->name('message.send')->middleware('auth');
 Route::resource('/chat', 'ChatController')->middleware('auth');
