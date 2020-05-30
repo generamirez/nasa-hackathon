@@ -71,7 +71,10 @@
                 @php
                     $data = json_decode($a->data);
                 @endphp
-                <li class="list-group-item user-chat"> {{ $data->user_to }} - {{ $data->title }}</li>
+                <a href="{{route('chat.show', $a->id)}}">
+                        <li class="list-group-item user-chat"> {{ $data->user_to }} - {{ $data->title }}</li>
+
+                </a>
             @empty
 
             @endforelse
@@ -83,42 +86,46 @@
              Message Log
         </div>
 
-    <div class="container">
-        <div class="mt-4 mb-4 scrollable" id="messagesLog">
-            <div class="container ">
-                <ul>
+        @if(isset($convo))
+        <div class="container">
+            <div class="mt-4 mb-4 scrollable" id="messagesLog">
+                <div class="container ">
+                    <ul>
+                    @forelse ($convo->messages as $m)
+                    @php
+                        $check = $m->sender->id == \Auth::user()->id ? "flex-reverse" : "flex-row";
+                        // dd($m->sender, \Auth::user(), $check);
+                    @endphp
+                    <div class="row {{$check}}">
 
-                @forelse ($convo->messages as $m)
-                @php
-                    $check = $m->sender->id == \Auth::user()->id ? "flex-reverse" : "flex-row";
-                    // dd($m->sender, \Auth::user(), $check);
-                 @endphp
-                 <div class="row {{$check}}">
+                        <li class="col-sm-3 list-group-item">
+                                {{ $m->body }}
+                        </li>
+                    </div>
 
-                    <li class="col-sm-3 list-group-item">
-                            {{ $m->body }}
-                    </li>
-                 </div>
+                    <br>
+                    @empty
 
-                <br>
-                @empty
-
-                @endforelse
-                </ul>
+                    @endforelse
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
 
-            <div class="absolute">
-                    {{ Form::open(['route' => ['message.send',$convo->id]], ['class' => "col-sm-6"]) }}
-                    <div class="input-group mb-3">
-                            <input type="text" name="message" class="form-control col-sm-10" aria-label="Message" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                              <button class="btn btn-outline-primary" type="submit">Send</button>
-                            </div>
-                          </div>
-                    {{ Form::close() }}
+        <div class="absolute">
+            {{ Form::open(['route' => ['message.send',$convo->id]], ['class' => "col-sm-6"]) }}
+            <div class="input-group mb-3">
+                    <input type="text" name="message" class="form-control col-sm-10" aria-label="Message" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="submit">Send</button>
+                    </div>
                 </div>
+            {{ Form::close() }}
+        </div>
+
+        @else
+
+        @endif
     </div>
 </div>
 

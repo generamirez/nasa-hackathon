@@ -109,7 +109,8 @@
         @else
         <div id="mySidenav" class="sidenav">
           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="{{route('sales-posts.index')}}">Sales</a>
+          <a href="{{route('sales-posts.index')}}">Sales</a>
+          <a href="{{route('chat.index')}}">Chat</a>
           <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">

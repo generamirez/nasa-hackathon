@@ -16,7 +16,10 @@ class ChatController extends Controller
      */
     public function index()
     {
-        //
+        $allConvos = Chat::conversations()->setPaginationParams(['sorting' => 'desc'])
+            ->setParticipant(\Auth::user())
+            ->get();
+        return view('Messages.show', compact('allConvos'));
     }
 
     /**
