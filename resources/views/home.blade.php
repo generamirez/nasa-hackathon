@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+        {{ dd(\Auth::user()) }}
     @if (\Auth::user()->role == "supplier")
     <div class="container">
             <div class="col-sm-12">
