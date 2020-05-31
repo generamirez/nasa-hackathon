@@ -2,6 +2,7 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
     <div class="table-responsive">
+            <h3>{{ $title }}</h3>
             <div class="btn-group float-right mb-4" role="group" aria-label="Basic example">
               <a type="button" href={{route('sales-posts.create')}} class="btn btn-primary">{{ __('msg.new_listing') }}</a>
             </div>

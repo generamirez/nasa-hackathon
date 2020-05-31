@@ -16,8 +16,9 @@ class SalePostController extends Controller
      */
     public function index()
     {
+        $title = "For Sale";
         $posts = SalePost::where('user_id', '!=', \Auth::user()->id)->paginate(20);
-        return view('FarmerDashboard.SalesPost.index', compact('posts'));
+        return view('FarmerDashboard.SalesPost.index', compact('posts','title'));
     }
 
     /**
@@ -104,11 +105,12 @@ class SalePostController extends Controller
 
     public function myListings(Request $request)
     {
+        $title = "My Listings";
         $posts = SalePost::where('user_id', '=', \Auth::user()->id)
         ->where('sold',false)
         ->paginate(20);
         $my_list = true;
-        return view('FarmerDashboard.SalesPost.index', compact('posts','my_list'));
+        return view('FarmerDashboard.SalesPost.index', compact('posts','my_list','title'));
     }
 
     public function sell(Request $request)

@@ -61,7 +61,7 @@
 
 <div class="row justify-content-center">
     {{-- <div class="card-header">Messages</div> --}}
-    <div class="col-sm-4 card messagebox--users">
+    <div class="col-sm-4 card messagebox--users" style="padding:0;">
        <div class="card-header">
             {{ __('msg.users') }}
        </div>
@@ -81,7 +81,7 @@
             </ul>
        </div>
     </div>
-    <div class="card col-sm-8 col-xs-12 message-log">
+    <div class="card col-sm-8 col-xs-12 message-log" style="padding:0;">
         <div class="card-header">
                 {{ __('msg.message_log') }}
         </div>
