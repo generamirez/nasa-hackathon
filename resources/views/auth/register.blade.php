@@ -66,7 +66,7 @@
                                 <div class="col-md-6">
                                     <select name="role" id="role" class="form-control @error('role') is-invalid @enderror" name="role" required>
                                       <option value="customer">Customer</option>
-                                      <option value="farmer">Farmer</option>
+                                      <option value="supplier">Farmer</option>
                                     </select>
                                     @error('role')
                                         <span class="invalid-feedback" role="alert">

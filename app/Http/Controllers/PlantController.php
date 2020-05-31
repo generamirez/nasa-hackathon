@@ -3,21 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\SalePost;
-use DB;
+use App\Plant;
 
-class SalePostController extends Controller
+class PlantController extends Controller
 {
-    const UPLOAD_PATH = 'public/modules/posts';
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    const UPLOAD_PATH = 'public/modules/plants';
     public function index()
     {
-        $posts = SalePost::where('user_id', '!=', \Auth::user()->id)->paginate(20);
-        return view('FarmerDashboard.SalesPost.index', compact('posts'));
+        //
     }
 
     /**
@@ -27,7 +26,7 @@ class SalePostController extends Controller
      */
     public function create()
     {
-        return view('FarmerDashboard.SalesPost.create');
+        return view('auth.Plants.create');
     }
 
     /**
@@ -38,20 +37,27 @@ class SalePostController extends Controller
      */
     public function store(Request $request)
     {
-        DB::beginTransaction();
-        $sp = new SalePost;
-        $sp->title = $request->title;
-        $sp->description = $request->description;
-        $sp->available = $request->available;
-        $sp->price = $request->price;
-        $sp->user_id = \Auth::user()->id;
+        // dd($request->all());
+        \DB::beginTransaction();
+        $p = new Plant;
+        $p->name = $request->title;
+        $p->variety = $request->variety;
+        $p->scientific_name = $request->scientific_name;
+        $p->opt_grow_temp = $request->opt_grow;
+        $p->min_grow_temp = $request->min_grow;
+        $p->tips = json_encode([
+            '1.27-2.54',
+            '2.54-5.08',
+            '5.08-7.62',
+            '2.54-6.35',
+        ]);
         if($request->image){
             $filename = ($request->title) . '-'. rand(0,1000). '-' . $request->image->getClientOriginalExtension();
-            $sp->image = $request->image->storeAs(SalePostController::UPLOAD_PATH, $filename);
-            $sp->createThumbnail();
+            $p->image = $request->image->storeAs(PlantController::UPLOAD_PATH, $filename);
+            $p->createThumbnail();
         }
-        $sp->save();
-        DB::commit();
+        $p->save();
+        \DB::commit();
 
         return redirect()->back()->with('success', 'Created a new listing!');
     }
@@ -64,8 +70,7 @@ class SalePostController extends Controller
      */
     public function show($id)
     {
-        $post = SalePost::find($id);
-        return view('FarmerDashboard.SalesPost.show', compact('post'));
+        //
     }
 
     /**
@@ -100,23 +105,5 @@ class SalePostController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function myListings(Request $request)
-    {
-        $posts = SalePost::where('user_id', '=', \Auth::user()->id)
-        ->where('sold',false)
-        ->paginate(20);
-        $my_list = true;
-        return view('FarmerDashboard.SalesPost.index', compact('posts','my_list'));
-    }
-
-    public function sell(Request $request)
-    {
-        $sp = SalePost::find($request->id);
-        $sp->sold = true;
-        $sp->save();
-
-        return redirect()->back()->with('success', 'Successfully sold!');
     }
 }

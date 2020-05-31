@@ -21,24 +21,32 @@
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
-                        <label for="date" class="control-label">{{ __('msg.description') }}</label>
-                        {{ Form::text('description', null, ['class' => 'form-control']) }}
+                        <label for="date" class="control-label">Variety</label>
+                        {{ Form::text('variety', null, ['class' => 'form-control']) }}
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
-                        <label for="date" class="control-label">{{ __('msg.available') }}</label>
-                        {{ Form::number('available', null, ['class' => 'form-control']) }}
+                        <label for="date" class="control-label">Scientific Name</label>
+                        {{ Form::text('scientific_name', null, ['class' => 'form-control']) }}
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
-                        <label for="date" class="control-label">{{ __('msg.price') }}</label>
-                        {{ Form::number('price', null, ['class' => 'form-control']) }}
+                        <label for="date" class="control-label">Opt Growth</label>
+                        {{ Form::number('opt_grow', null, ['class' => 'form-control', 'step'=>"0.01"]) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="date" class="control-label">Min Growth</label>
+                        {{ Form::number('min_grow', null, ['class' => 'form-control', 'step'=>"0.01"]) }}
                     </div>
                 </div>
             </div>

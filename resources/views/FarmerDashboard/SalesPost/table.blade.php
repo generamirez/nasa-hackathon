@@ -10,6 +10,7 @@
                 <th>{{ __('msg.name') }}</th>
                 <th>{{ __('msg.description') }}</th>
                 <th>{{ __('msg.available') }}</th>
+                <th>  Type </th>
                 <th>{{ __('msg.price') }}</th>
                 <th>{{ __('msg.actions') }}</th>
             </thead>
@@ -24,6 +25,7 @@
                         <td>{{ $p->title }}</td>
                         <td>{{ $p->description }}</td>
                         <td>{{ $p->available }}</td>
+                        <td>{{ $p->type }}</td>
                         <td>{{ $p->price }}</td>
                         <td>
                             @if (isset($my_list))

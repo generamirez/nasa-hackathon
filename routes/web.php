@@ -32,5 +32,6 @@ Route::group(['middleware' => 'language'], function(){
     Route::post('/{id}/postMessage', 'ChatController@makeChatMessage')->name('message.send')->middleware('auth');
     Route::resource('/chat', 'ChatController')->middleware('auth');
     Route::resource('/sales-posts', 'SalePostController')->middleware('auth');
+    Route::resource('/plants','PlantController')->middleware('auth');
 
 });
