@@ -10,6 +10,8 @@
 </style>
     <div class="container" id="center">
         <div class="form-body">
+
+            <h3>{{ __('msg.new_listing') }}</h3>
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
