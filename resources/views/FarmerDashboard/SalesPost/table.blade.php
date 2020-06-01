@@ -6,6 +6,24 @@
             <div class="btn-group float-right mb-4" role="group" aria-label="Basic example">
               <a type="button" href={{route('sales-posts.create')}} class="btn btn-primary">{{ __('msg.new_listing') }}</a>
             </div>
+
+        @if ($title === "For Sale")
+        <div class="row mb-4">
+                <div class="col-sm-4">
+                    {{ Form::open(['route' => 'sales-posts.index','method'=>'GET']) }}
+                    <div class="form-group">
+                        {{ Form::label('type','Type') }}
+                        {{ Form::select('type',['request' => 'Request','sale'=>'Sale'],null, ['class' => "form-control"])  }}
+                    </div>
+                    <div class="form-group">
+                            {{ Form::button('Submit', ['class'=>'btn btn-primary','type'=>'submit']) }}
+
+                    </div>
+                    {{ Form::close() }}
+                </div>
+        </div>
+
+        @endif
         <table class="table">
             <thead>
                 <th>{{ __('msg.name') }}</th>

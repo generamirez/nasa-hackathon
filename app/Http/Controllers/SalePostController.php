@@ -14,10 +14,14 @@ class SalePostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $title = "For Sale";
-        $posts = SalePost::where('user_id', '!=', \Auth::user()->id)->paginate(20);
+        $posts = SalePost::where('user_id', '!=', \Auth::user()->id);
+        if($request->type){
+            $posts = $posts->where('type','LIKE',$request->type);
+        }
+        $posts = $posts->paginate(20);
         return view('FarmerDashboard.SalesPost.index', compact('posts','title'));
     }
 
