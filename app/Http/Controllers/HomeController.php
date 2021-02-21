@@ -18,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -64,5 +64,10 @@ class HomeController extends Controller
         }
         App::setLocale($request->locale);
         return redirect()->back();
+    }
+
+    public function test (Request $request)
+    {
+        dd($request->ip());
     }
 }
