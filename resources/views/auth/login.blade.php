@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
+                            {{-- <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -48,7 +48,7 @@
                                         {{ __('Remember Me') }}
                                     </label>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="form-group row mb-0">
@@ -57,25 +57,25 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
+                                {{-- @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('msg.forgot_password') }}
                                     </a>
-                                @endif
+                                @endif --}}
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
 
-            <div class="offset-sm-7 row mt-5  ">
+            {{-- <div class="offset-sm-7 row mt-5  ">
                     <div class="col-md-4 col-sm-offset-2">
                         <a class="locale" href="setlocale/fil"> Filipino </a>
                     </div>
                     <div class="col-md-4">
                         <a class="locale" href="setlocale/en"> English </a>
                     </div>
-                </div>
+                </div> --}}
         </div>
     </div>
 </div>

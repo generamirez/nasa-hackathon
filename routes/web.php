@@ -17,15 +17,15 @@ Route::get('setlocale/{locale}',function($lang){
     return redirect()->back();
 });
 Route::get('/', 'HomeController@test');
-// Route::group(['middleware' => 'language'], function(){
+Auth::routes();
+Route::group(['middleware' => 'auth'], function(){
     // Auth::routes();
 //     Route::get('/home', 'HomeController@index')->name('home');
 //     Route::post('/change-locale', 'HomeController@changeLocale')->name('locale.change');
 //     Route::get('/', 'HomeController@index')->name('home');
 
-//     Auth::routes();
 
-//     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
 
 //     Route::get('/my-listings', 'SalePostController@myListings')->name('my.listings')->middleware('auth');
 //     Route::post('/sold', 'SalePostController@sell')->name('mark.sold')->middleware('auth');
@@ -35,4 +35,4 @@ Route::get('/', 'HomeController@test');
 //     Route::resource('/sales-posts', 'SalePostController')->middleware('auth');
 //     Route::resource('/plants','PlantController')->middleware('auth');
 
-// });
+});

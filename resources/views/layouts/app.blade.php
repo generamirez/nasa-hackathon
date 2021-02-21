@@ -79,7 +79,8 @@
 
             {{-- <a class="navbar-brand ml-5" href="{{ url('/') }}"> --}}
                 <a class="navbar-brand ml-5" href="/home">
-                        <img src="{{url('images/Logo.png')}}" alt="Logo" style="width:20%;">
+                        {{-- <img src="{{url('images/Logo.png')}}" alt="Logo" style="width:20%;"> --}}
+                        sandbox 123
                       </a>
             {{-- </a> --}}
             <div class="container">
@@ -101,7 +102,7 @@
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    {{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> --}}
                                 </li>
                             @endif
                         @else
@@ -116,9 +117,9 @@
         @else
         <div id="mySidenav" class="sidenav">
           <a href="javascript:void(0)" class="closebtn navButton" onclick="closeNav()">&times;</a>
-          <a class="navButton" href="{{route('sales-posts.index')}}">Sales</a>
+          {{-- <a class="navButton" href="{{route('sales-posts.index')}}">Sales</a>
           <a class="navButton" href="{{route('my.listings')}}">My Listings</a>
-          <a class="navButton" href="{{route('chat.index')}}">Chat</a>
+          <a class="navButton" href="{{route('chat.index')}}">Chat</a> --}}
           <a class="navButton" href="{{ route('logout') }}"
             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
@@ -131,12 +132,12 @@
 
 
        <div class="form-group row mt-5  ">
-            <div class="col-md-4 col-sm-offset-2">
+            {{-- <div class="col-md-4 col-sm-offset-2">
                 <a class="locale" href="setlocale/fil"> Filipino </a>
             </div>
             <div class="col-md-4">
                 <a class="locale" href="setlocale/en"> English </a>
-            </div>
+            </div> --}}
         </div>
         </div>
         {{-- <span onclick="openNav()">open</span> --}}

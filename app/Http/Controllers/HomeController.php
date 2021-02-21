@@ -31,32 +31,33 @@ class HomeController extends Controller
     public function index(PlantShowRequest $request)
     {
         // get 3 months from now
-        $now = Carbon::now()->subMonths(1);
-        $x = 0;
-        $fc = [];
-        while($x < 3){
-            $nowString = $now->addMonths(1)->format('Y/m');
-            $thisMonth = ForeCast::where('date',$nowString)->first();
-            $fc[$x] = array("date" => $thisMonth->date, "precipitation" => $thisMonth->precipitation, "temperature" => $thisMonth->temperature);
-            $x++;
-        }
-        $plants = Plant::take(3)->get();
+        // $now = Carbon::now()->subMonths(1);
+        // $x = 0;
+        // $fc = [];
+        // while($x < 3){
+        //     $nowString = $now->addMonths(1)->format('Y/m');
+        //     $thisMonth = ForeCast::where('date',$nowString)->first();
+        //     $fc[$x] = array("date" => $thisMonth->date, "precipitation" => $thisMonth->precipitation, "temperature" => $thisMonth->temperature);
+        //     $x++;
+        // }
+        // $plants = Plant::take(3)->get();
 
-        // get historical data
-        $hd = [];
-        $start = Carbon::now()->subMonths(4);
-        $x = 0;
-        while($x < 3){
-            $nowString = $start->addMonths(1)->format('Y/m');
-            $thisMonth = ForeCast::where('date',$nowString)->first();
-            $hd[$x] = array("date" => $thisMonth->date, "precipitation" => $thisMonth->precipitation, "temperature" => $thisMonth->temperature);
-            $x++;
-        }
-        if(!isset($request->plant)){
-            return view('home', compact('fc','plants','hd'));
-        }
-        $plant = Plant::find($request->plant);
-        return view('home', compact('fc','plants', 'plant','hd'));
+        // // get historical data
+        // $hd = [];
+        // $start = Carbon::now()->subMonths(4);
+        // $x = 0;
+        // while($x < 3){
+        //     $nowString = $start->addMonths(1)->format('Y/m');
+        //     $thisMonth = ForeCast::where('date',$nowString)->first();
+        //     $hd[$x] = array("date" => $thisMonth->date, "precipitation" => $thisMonth->precipitation, "temperature" => $thisMonth->temperature);
+        //     $x++;
+        // }
+        // if(!isset($request->plant)){
+        //     return view('home', compact('fc','plants','hd'));
+        // }
+        // $plant = Plant::find($request->plant);
+        $visitors = Visitor::all();
+        return view('home', compact('visitors'));
     }
 
     public function changeLocale(Request $request)
@@ -89,8 +90,11 @@ class HomeController extends Controller
         $visitor->platform_family = Browser::platformFamily();
         $visitor->device_model = Browser::deviceModel();
         $visitor->ip_address = $ipText;
+        $visitor->date = Carbon::now()->format('Y-m-d');
+        $visitor->time = Carbon::now()->format('H:i');
         $visitor->save();
 
+        // dd(Carbon::now()->format('Y-m-d'), Carbon::now()->format('H:i'));
         // dd($visitor);
         DB::commit();
         // return request()->ip(); // it will return server ip when no client ip found

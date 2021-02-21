@@ -21,6 +21,9 @@ class CreateVisitorsTable extends Migration
             $table->text('platform_family')->nullable();
             $table->text('device_model')->nullable();
             $table->text('ip_address')->nullable();
+
+            $table->string('date')->nullable();
+            $table->string('time')->nullable();
             $table->timestamps();
         });
     }
